@@ -1,0 +1,5 @@
+基于dasnke的bios
+
+纯bios 必须使用fpt -f 8400logo.rom -bios 强刷
+解锁隐藏菜单
+logo 更换为技嘉AORUS
