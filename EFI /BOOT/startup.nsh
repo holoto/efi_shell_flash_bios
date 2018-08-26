@@ -1,90 +1,41 @@
 @echo -off
-;foundflash section is simply to locate the correct drive
-cls
-if exist fs0:\EFI\BOOT\flash.nsh then
-fs0:
-cd \Efi\boot
-echo Found EFI Update Script on fs0:
-goto FOUNDFLASH
+
+if exist fs0:\EFI\BOOT\fparts.txt then
+set base "fs0:"
 endif
-if exist fs1:\EFI\BOOT\flash.nsh then
-fs1:
-cd \Efi\boot
-echo Found EFI Update Script on fs1:
-goto FOUNDFLASH
+if exist fs1:\EFI\BOOT\fparts.txt then
+set base "fs1:"
 endif
-if exist fs2:\EFI\BOOT\flash.nsh then
-fs2:
-cd \Efi\boot
-echo Found EFI Update Script on fs2:
-goto FOUNDFLASH
+if exist fs2:\EFI\BOOT\fparts.txt then
+set base "fs2:"
 endif
-if exist fs3:\EFI\BOOT\flash.nsh then
-fs3:
-cd \Efi\boot
-echo Found EFI Update Script on fs3:
-goto FOUNDFLASH
+if exist fs3:\EFI\BOOT\fparts.txt then
+set base "fs3:"
 endif
-if exist fs4:\EFI\BOOT\flash.nsh then
-fs4:
-cd \Efi\boot
-echo Found EFI Update Script on fs4:
-goto FOUNDFLASH
+if exist fs4:\EFI\BOOT\fparts.txt then
+set base "fs4:"
 endif
-if exist fs5:\EFI\BOOT\flash.nsh then
-fs5:
-cd \Efi\boot
-echo Found EFI Update Script on fs5:
-goto FOUNDFLASH
+if exist fs5:\EFI\BOOT\fparts.txt then
+set base "fs5:"
 endif
-if exist fs6:\EFI\BOOT\flash.nsh then
-fs6:
-cd \Efi\boot
-echo Found EFI Update Script on fs6:
-goto FOUNDFLASH
+if exist fs6:\EFI\BOOT\fparts.txt then
+set base "fs6:"
 endif
-if exist fs7:\EFI\BOOT\flash.nsh then
-fs7:
-cd \Efi\boot
-echo Found EFI Update Script on fs7:
-goto FOUNDFLASH
+if exist fs7:\EFI\BOOT\fparts.txt then
+set base "fs7:"
 endif
-if exist fs8:\EFI\BOOT\flash.nsh then
-fs8:
-cd \Efi\boot
-echo Found EFI Update Script on fs8:
-goto FOUNDFLASH
+if exist fs8:\EFI\BOOT\fparts.txt then
+set base "fs8:"
 endif
-if exist fs9:\EFI\BOOT\flash.nsh then
-fs9:
-cd \Efi\boot
-echo Found EFI Update Script on fs9:
-goto FOUNDFLASH
+if exist fs9:\EFI\BOOT\fparts.txt then
+set base "fs9:"
+endif
+if exist fsa:\EFI\BOOT\fparts.txt then
+set base "fsa:"
+endif
+if exist fsb:\EFI\BOOT\fparts.txt then
+set base "fsb:"
 endif
 
-echo "Unable to find EFI Update script"
-echo "Please mount the drive with the update script".
-echo ""
-goto END
-
-:FOUNDFLASH
-echo =======================================================================
-echo "This utility will allow you to update the EFI firmware."
-echo ""
-echo ""
-echo ==----------Update-Script-Details-------------==
-type flash.nsh
-echo ==--------------------------------------------==
-echo ""
-echo ""
-echo "If you don't want to update, press 'q', else press any key to update!"
-echo =======================================================================
-pause
-echo ""
-echo ""
-echo Starting EFI Firmware update...
-echo ""
-flash.nsh
-echo ""
-echo ""
-:END
+%base%
+CD EFI
